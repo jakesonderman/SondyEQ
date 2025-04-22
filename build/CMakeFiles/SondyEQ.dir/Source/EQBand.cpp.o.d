@@ -1,7 +1,6 @@
 CMakeFiles/SondyEQ.dir/Source/EQBand.cpp.o: \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/Source/EQBand.cpp \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/Source/EQBand.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_basics/juce_audio_basics.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_core/juce_core.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_core/system/juce_TargetPlatform.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/TargetConditionals.h \
@@ -967,6 +966,8 @@ CMakeFiles/SondyEQ.dir/Source/EQBand.cpp.o: \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_core/streams/juce_AndroidDocumentInputSource.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_core/misc/juce_OptionsHelpers.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_core/detail/juce_CallbackListenerList.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/juce_dsp.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_basics/juce_audio_basics.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_basics/buffers/juce_AudioDataConverters.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_basics/buffers/juce_FloatVectorOperations.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_basics/buffers/juce_AudioSampleBuffer.h \
@@ -1009,7 +1010,54 @@ CMakeFiles/SondyEQ.dir/Source/EQBand.cpp.o: \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_basics/utilities/juce_AudioWorkgroup.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_basics/midi/ump/juce_UMPBytesOnGroup.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_basics/midi/ump/juce_UMPDeviceInfo.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_devices/juce_audio_devices.h \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include/arm_neon.h \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include/arm_bf16.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/complex \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/native/juce_SIMDNativeOps_fallback.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/native/juce_SIMDNativeOps_neon.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/containers/juce_SIMDRegister.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/containers/juce_SIMDRegister_Impl.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/maths/juce_SpecialFunctions.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/maths/juce_Matrix.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/maths/juce_Phase.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/maths/juce_Polynomial.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/maths/juce_FastMathApproximations.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/maths/juce_LookupTable.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/maths/juce_LogRampedValue.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/containers/juce_AudioBlock.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_ProcessContext.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_ProcessorWrapper.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_ProcessorChain.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_ProcessorDuplicator.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_IIRFilter.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_IIRFilter_Impl.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_FIRFilter.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_StateVariableFilter.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_FirstOrderTPTFilter.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_Panner.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_DelayLine.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_Oversampling.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_BallisticsFilter.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_LinkwitzRileyFilter.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_DryWetMixer.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_StateVariableTPTFilter.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/frequency/juce_FFT.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/frequency/juce_Convolution.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/frequency/juce_Windowing.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/filter_design/juce_FilterDesign.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/widgets/juce_Reverb.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/widgets/juce_Bias.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/widgets/juce_Gain.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/widgets/juce_WaveShaper.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/widgets/juce_Oscillator.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/widgets/juce_LadderFilter.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/widgets/juce_Compressor.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/widgets/juce_NoiseGate.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/widgets/juce_Limiter.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/widgets/juce_Phaser.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/widgets/juce_Chorus.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_basics/juce_gui_basics.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_graphics/juce_graphics.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_events/juce_events.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_events/messages/juce_MessageManager.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_events/messages/juce_Message.h \
@@ -1035,7 +1083,6 @@ CMakeFiles/SondyEQ.dir/Source/EQBand.cpp.o: \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_events/interprocess/juce_ConnectedChildProcess.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_events/interprocess/juce_NetworkServiceDiscovery.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_events/native/juce_ScopedLowPowerModeDisabler.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_graphics/juce_graphics.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_graphics/geometry/juce_AffineTransform.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_graphics/geometry/juce_Point.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_graphics/geometry/juce_Line.h \
@@ -1078,34 +1125,6 @@ CMakeFiles/SondyEQ.dir/Source/EQBand.cpp.o: \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_graphics/effects/juce_DropShadowEffect.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_graphics/effects/juce_GlowEffect.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_graphics/detail/juce_Unicode.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_devices/midi_io/juce_MidiDevices.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_devices/midi_io/juce_MidiMessageCollector.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_devices/audio_io/juce_AudioIODevice.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_devices/audio_io/juce_AudioIODeviceType.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_devices/audio_io/juce_SystemAudioVolume.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_devices/sources/juce_AudioSourcePlayer.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_devices/sources/juce_AudioTransportSource.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_devices/audio_io/juce_AudioDeviceManager.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_formats/juce_audio_formats.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_formats/format/juce_AudioFormatReader.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_formats/format/juce_AudioFormatWriter.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_formats/format/juce_MemoryMappedAudioFormatReader.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_formats/format/juce_AudioFormat.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_formats/format/juce_AudioFormatManager.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_formats/format/juce_AudioFormatReaderSource.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_formats/format/juce_AudioSubsectionReader.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_formats/format/juce_BufferingAudioFormatReader.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_formats/codecs/juce_AiffAudioFormat.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_formats/codecs/juce_CoreAudioFormat.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_formats/codecs/juce_FlacAudioFormat.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_formats/codecs/juce_LAMEEncoderAudioFormat.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_formats/codecs/juce_MP3AudioFormat.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_formats/codecs/juce_OggVorbisAudioFormat.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_formats/codecs/juce_WavAudioFormat.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_formats/codecs/juce_WindowsMediaAudioFormat.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_formats/sampler/juce_Sampler.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/juce_audio_processors.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_basics/juce_gui_basics.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_data_structures/juce_data_structures.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_data_structures/undomanager/juce_UndoableAction.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_data_structures/undomanager/juce_UndoManager.h \
@@ -1270,135 +1289,4 @@ CMakeFiles/SondyEQ.dir/Source/EQBand.cpp.o: \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_basics/layout/juce_FlexBox.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_basics/layout/juce_GridItem.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_basics/layout/juce_Grid.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_basics/native/juce_ScopedDPIAwarenessDisabler.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_extra/juce_gui_extra.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_extra/documents/juce_FileBasedDocument.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_extra/code_editor/juce_CodeDocument.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_extra/code_editor/juce_CodeEditorComponent.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_extra/code_editor/juce_CodeTokeniser.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_extra/code_editor/juce_CPlusPlusCodeTokeniser.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_extra/code_editor/juce_CPlusPlusCodeTokeniserFunctions.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_extra/code_editor/juce_XMLCodeTokeniser.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_extra/code_editor/juce_LuaCodeTokeniser.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_extra/embedding/juce_ActiveXControlComponent.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_extra/embedding/juce_AndroidViewComponent.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_extra/embedding/juce_NSViewComponent.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_extra/embedding/juce_UIViewComponent.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_extra/embedding/juce_XEmbedComponent.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_extra/embedding/juce_HWNDComponent.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_extra/misc/juce_AppleRemote.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_extra/misc/juce_BubbleMessageComponent.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_extra/misc/juce_ColourSelector.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_extra/misc/juce_KeyMappingEditorComponent.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_extra/misc/juce_PreferencesPanel.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_extra/misc/juce_PushNotifications.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_extra/misc/juce_RecentlyOpenedFilesList.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_extra/misc/juce_SplashScreen.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_extra/misc/juce_SystemTrayIconComponent.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_extra/misc/juce_WebBrowserComponent.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_extra/misc/juce_LiveConstantEditor.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_extra/misc/juce_AnimatedAppComponent.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_extra/detail/juce_WebControlRelayEvents.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_extra/misc/juce_WebControlRelays.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_extra/misc/juce_WebControlParameterIndexReceiver.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/utilities/juce_AAXClientExtensions.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/utilities/juce_VST2ClientExtensions.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/utilities/juce_VST3ClientExtensions.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/format_types/juce_ARACommon.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/utilities/juce_ExtensionsVisitor.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/processors/juce_AudioProcessorParameter.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/processors/juce_HostedAudioProcessorParameter.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/processors/juce_AudioProcessorEditorHostContext.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/processors/juce_AudioProcessorEditor.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/processors/juce_AudioProcessorListener.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/processors/juce_AudioProcessorParameterGroup.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/processors/juce_AudioProcessor.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/processors/juce_PluginDescription.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/processors/juce_AudioPluginInstance.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/processors/juce_AudioProcessorGraph.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/processors/juce_GenericAudioProcessorEditor.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/format/juce_AudioPluginFormat.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/format/juce_AudioPluginFormatManager.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/scanning/juce_KnownPluginList.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/format_types/juce_AudioUnitPluginFormat.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/format_types/juce_LADSPAPluginFormat.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/format_types/juce_LV2PluginFormat.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/format_types/juce_VST3PluginFormat.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/format_types/juce_VSTMidiEventList.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/format_types/juce_VSTPluginFormat.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/format_types/juce_ARAHosting.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/scanning/juce_PluginDirectoryScanner.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/scanning/juce_PluginListComponent.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/utilities/juce_AudioProcessorParameterWithID.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/utilities/juce_RangedAudioParameter.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/utilities/juce_AudioParameterFloat.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/utilities/juce_AudioParameterInt.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/utilities/juce_AudioParameterBool.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/utilities/juce_AudioParameterChoice.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/utilities/juce_ParameterAttachments.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/utilities/juce_AudioProcessorValueTreeState.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/utilities/juce_PluginHostType.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/utilities/ARA/juce_ARADebug.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_processors/utilities/ARA/juce_ARA_utils.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_utils/juce_audio_utils.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_utils/gui/juce_AudioDeviceSelectorComponent.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_utils/gui/juce_AudioThumbnailBase.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_utils/gui/juce_AudioThumbnail.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_utils/gui/juce_AudioThumbnailCache.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_utils/gui/juce_AudioVisualiserComponent.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_utils/gui/juce_KeyboardComponentBase.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_utils/gui/juce_MidiKeyboardComponent.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_utils/gui/juce_MPEKeyboardComponent.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_utils/gui/juce_AudioAppComponent.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_utils/gui/juce_BluetoothMidiDevicePairingDialogue.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_utils/players/juce_SoundPlayer.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_utils/players/juce_AudioProcessorPlayer.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_utils/audio_cd/juce_AudioCDBurner.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_utils/audio_cd/juce_AudioCDReader.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/juce_dsp.h \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include/arm_neon.h \
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include/arm_bf16.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/complex \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/native/juce_SIMDNativeOps_fallback.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/native/juce_SIMDNativeOps_neon.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/containers/juce_SIMDRegister.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/containers/juce_SIMDRegister_Impl.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/maths/juce_SpecialFunctions.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/maths/juce_Matrix.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/maths/juce_Phase.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/maths/juce_Polynomial.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/maths/juce_FastMathApproximations.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/maths/juce_LookupTable.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/maths/juce_LogRampedValue.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/containers/juce_AudioBlock.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_ProcessContext.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_ProcessorWrapper.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_ProcessorChain.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_ProcessorDuplicator.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_IIRFilter.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_IIRFilter_Impl.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_FIRFilter.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_StateVariableFilter.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_FirstOrderTPTFilter.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_Panner.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_DelayLine.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_Oversampling.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_BallisticsFilter.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_LinkwitzRileyFilter.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_DryWetMixer.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/processors/juce_StateVariableTPTFilter.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/frequency/juce_FFT.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/frequency/juce_Convolution.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/frequency/juce_Windowing.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/filter_design/juce_FilterDesign.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/widgets/juce_Reverb.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/widgets/juce_Bias.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/widgets/juce_Gain.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/widgets/juce_WaveShaper.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/widgets/juce_Oscillator.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/widgets/juce_LadderFilter.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/widgets/juce_Compressor.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/widgets/juce_NoiseGate.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/widgets/juce_Limiter.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/widgets/juce_Phaser.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/widgets/juce_Chorus.h
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_gui_basics/native/juce_ScopedDPIAwarenessDisabler.h

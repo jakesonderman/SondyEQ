@@ -19,18 +19,16 @@ EQBand::~EQBand()
 {
 }
 
-void EQBand::prepare(double newSampleRate)
+void EQBand::prepare(const juce::dsp::ProcessSpec& spec)
 {
-    sampleRate = newSampleRate;
-    juce::dsp::ProcessSpec spec{ sampleRate, 1024, 2 };
+    sampleRate = spec.sampleRate;
     filterProcessor.prepare(spec);
     updateFilter();
+    filterProcessor.reset();
 }
 
-void EQBand::process(juce::AudioBuffer<float>& buffer)
+void EQBand::process(juce::dsp::ProcessContextReplacing<float>& context)
 {
-    juce::dsp::AudioBlock<float> block(buffer);
-    juce::dsp::ProcessContextReplacing<float> context(block);
     filterProcessor.process(context);
 }
 

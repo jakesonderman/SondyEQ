@@ -1355,7 +1355,6 @@ CMakeFiles/SondyEQ.dir/Source/PluginProcessor.cpp.o: \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_utils/players/juce_AudioProcessorPlayer.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_utils/audio_cd/juce_AudioCDBurner.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_utils/audio_cd/juce_AudioCDReader.h \
-  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/Source/EQInterface.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/juce_dsp.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include/arm_neon.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include/arm_bf16.h \
@@ -1403,5 +1402,6 @@ CMakeFiles/SondyEQ.dir/Source/PluginProcessor.cpp.o: \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/widgets/juce_Limiter.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/widgets/juce_Phaser.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/widgets/juce_Chorus.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/Source/EQInterface.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/Source/EQBand.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/Source/PluginEditor.h

@@ -4,6 +4,7 @@
 SondyEQAudioProcessorEditor::SondyEQAudioProcessorEditor (SondyEQAudioProcessor& p)
     : AudioProcessorEditor (&p), audioProcessor (p)
 {
+    eqInterface.setProcessor(&audioProcessor);
     addAndMakeVisible(eqInterface);
     setSize (800, 400);
 }

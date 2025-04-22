@@ -1,5 +1,6 @@
 #pragma once
 
+
 #include <juce_audio_basics/juce_audio_basics.h>
 #include <juce_audio_devices/juce_audio_devices.h>
 #include <juce_audio_formats/juce_audio_formats.h>
@@ -11,7 +12,9 @@
 #include <juce_graphics/juce_graphics.h>
 #include <juce_gui_basics/juce_gui_basics.h>
 #include <juce_gui_extra/juce_gui_extra.h>
+#include <juce_dsp/juce_dsp.h>
 #include "EQInterface.h"
+#include "EQBand.h"
 
 class SondyEQAudioProcessor : public juce::AudioProcessor
 {
@@ -47,8 +50,15 @@ public:
 
     EQInterface& getEQInterface() { return eqInterface; }
 
+    // Public access to bands for the editor
+    std::vector<std::unique_ptr<EQBand>>& getBands() { return bands; }
+    void addBand(std::unique_ptr<EQBand> band);
+    void removeBand(EQBand* band);
+
 private:
     EQInterface eqInterface;
+    std::vector<std::unique_ptr<EQBand>> bands;
+    juce::dsp::ProcessSpec spec;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SondyEQAudioProcessor)
 };

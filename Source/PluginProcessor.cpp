@@ -6,6 +6,24 @@ SondyEQAudioProcessor::SondyEQAudioProcessor()
                      .withInput  ("Input",  juce::AudioChannelSet::stereo(), true)
                      .withOutput ("Output", juce::AudioChannelSet::stereo(), true))
 {
+    // Initialize with some default bands
+    auto lowShelf = std::make_unique<EQBand>();
+    lowShelf->setFrequency(100.0f);
+    lowShelf->setType(FilterType::LowShelf);
+    lowShelf->setGain(0.0f);  // Initialize gain
+    bands.push_back(std::move(lowShelf));
+    
+    auto peak = std::make_unique<EQBand>();
+    peak->setFrequency(1000.0f);
+    peak->setType(FilterType::Peak);
+    peak->setGain(0.0f);  // Initialize gain
+    bands.push_back(std::move(peak));
+    
+    auto highShelf = std::make_unique<EQBand>();
+    highShelf->setFrequency(5000.0f);
+    highShelf->setType(FilterType::HighShelf);
+    highShelf->setGain(0.0f);  // Initialize gain
+    bands.push_back(std::move(highShelf));
 }
 
 SondyEQAudioProcessor::~SondyEQAudioProcessor()
@@ -60,13 +78,36 @@ void SondyEQAudioProcessor::changeProgramName (int index, const juce::String& ne
 {
 }
 
+void SondyEQAudioProcessor::addBand(std::unique_ptr<EQBand> band)
+{
+    band->prepare(spec);
+    bands.push_back(std::move(band));
+}
+
+void SondyEQAudioProcessor::removeBand(EQBand* band)
+{
+    bands.erase(std::remove_if(bands.begin(), bands.end(),
+                              [band](const auto& b) { return b.get() == band; }),
+                bands.end());
+}
+
 void SondyEQAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
-    eqInterface.setSampleRate(sampleRate);
+    // Initialize ProcessSpec
+    spec.sampleRate = sampleRate;
+    spec.maximumBlockSize = samplesPerBlock;
+    spec.numChannels = static_cast<size_t>(getTotalNumOutputChannels());
+
+    // Prepare each band
+    for (auto& band : bands)
+    {
+        band->prepare(spec);
+    }
 }
 
 void SondyEQAudioProcessor::releaseResources()
 {
+    // When playback stops, you can use this to free up any spare memory, etc.
 }
 
 bool SondyEQAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
@@ -81,11 +122,26 @@ bool SondyEQAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) 
     return true;
 }
 
-void SondyEQAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
+void SondyEQAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
+                                        juce::MidiBuffer& midiMessages)
 {
     juce::ScopedNoDenormals noDenormals;
-    
-    eqInterface.process(buffer);
+    auto totalNumInputChannels  = static_cast<size_t>(getTotalNumInputChannels());
+    auto totalNumOutputChannels = static_cast<size_t>(getTotalNumOutputChannels());
+
+    // Clear any unused output channels
+    for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
+        buffer.clear (static_cast<int>(i), 0, buffer.getNumSamples());
+
+    // Create an AudioBlock for the entire buffer
+    juce::dsp::AudioBlock<float> block(buffer);
+    juce::dsp::ProcessContextReplacing<float> context(block);
+
+    // Process through each band
+    for (auto& band : bands)
+    {
+        band->process(context);
+    }
 }
 
 bool SondyEQAudioProcessor::hasEditor() const

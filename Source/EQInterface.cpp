@@ -1,4 +1,5 @@
 #include "EQInterface.h"
+#include "PluginProcessor.h"
 
 EQInterface::EQInterface()
 {
@@ -7,6 +8,15 @@ EQInterface::EQInterface()
 
 EQInterface::~EQInterface()
 {
+}
+
+void EQInterface::updateBands()
+{
+    if (audioProcessor)
+    {
+        updateFrequencyResponse();
+        repaint();
+    }
 }
 
 void EQInterface::paint(juce::Graphics& g)
@@ -32,14 +42,15 @@ void EQInterface::paint(juce::Graphics& g)
     }
     
     // Create dynamic gradient based on bands
-    if (!bands.empty())
+    if (audioProcessor && !audioProcessor->getBands().empty())
     {
         juce::ColourGradient gradient;
         
         // Add gradient stops for each band
-        for (size_t i = 0; i < bands.size(); ++i)
+        const auto& processorBands = audioProcessor->getBands();
+        for (size_t i = 0; i < processorBands.size(); ++i)
         {
-            const auto& band = bands[i];
+            const auto& band = processorBands[i];
             float x = frequencyToX(band->getFrequency());
             float y = gainToY(band->getGain());
             
@@ -72,13 +83,13 @@ void EQInterface::paint(juce::Graphics& g)
             bandColor = bandColor.withBrightness(brightness);
             
             // Add gradient stop
-            gradient.addColour(static_cast<float>(i) / (bands.size() - 1), bandColor);
+            gradient.addColour(static_cast<float>(i) / (processorBands.size() - 1), bandColor);
         }
         
         // If we only have one band, add a second stop to create a gradient
-        if (bands.size() == 1)
+        if (processorBands.size() == 1)
         {
-            gradient.addColour(1.0f, bands[0]->getType() == FilterType::Peak ? 
+            gradient.addColour(1.0f, processorBands[0]->getType() == FilterType::Peak ? 
                              juce::Colours::green : juce::Colours::blue);
         }
         
@@ -90,6 +101,61 @@ void EQInterface::paint(juce::Graphics& g)
         // Draw frequency response curve with dynamic gradient
         g.setGradientFill(gradient);
         g.strokePath(frequencyResponsePath, juce::PathStrokeType(3.0f));
+        
+        // Draw bands with improved visibility
+        for (const auto& band : processorBands)
+        {
+            juce::Point<float> pos = band->getPosition();
+            float x = frequencyToX(band->getFrequency());
+            float y = gainToY(band->getGain());
+            
+            // Draw band handle with color matching the curve
+            juce::Colour bandColor;
+            switch (band->getType())
+            {
+                case FilterType::LowShelf:
+                    bandColor = juce::Colours::blue;
+                    break;
+                case FilterType::HighShelf:
+                    bandColor = juce::Colours::red;
+                    break;
+                case FilterType::Peak:
+                    bandColor = juce::Colours::green;
+                    break;
+                case FilterType::Notch:
+                    bandColor = juce::Colours::yellow;
+                    break;
+                case FilterType::LowPass:
+                    bandColor = juce::Colours::cyan;
+                    break;
+                case FilterType::HighPass:
+                    bandColor = juce::Colours::magenta;
+                    break;
+            }
+            
+            // Adjust color brightness based on gain
+            float brightness = juce::jmap(band->getGain(), minGain, maxGain, 0.3f, 1.0f);
+            bandColor = bandColor.withBrightness(brightness);
+            
+            g.setColour(band.get() == selectedBand ? bandColor.brighter(0.5f) : bandColor);
+            g.fillEllipse(x - 6, y - 6, 12, 12);
+            
+            // Draw band outline
+            g.setColour(juce::Colours::black);
+            g.drawEllipse(x - 6, y - 6, 12, 12, 1.0f);
+            
+            // Draw frequency and gain labels
+            g.setColour(juce::Colours::white);
+            g.setFont(12.0f);
+            
+            // Frequency label
+            juce::String freqText = juce::String(band->getFrequency(), 0) + " Hz";
+            g.drawText(freqText, x - 30, y - 25, 60, 20, juce::Justification::centred);
+            
+            // Gain label
+            juce::String gainText = juce::String(band->getGain(), 1) + " dB";
+            g.drawText(gainText, x - 30, y + 5, 60, 20, juce::Justification::centred);
+        }
     }
     else
     {
@@ -103,61 +169,6 @@ void EQInterface::paint(juce::Graphics& g)
         g.setGradientFill(defaultGradient);
         g.strokePath(frequencyResponsePath, juce::PathStrokeType(3.0f));
     }
-    
-    // Draw bands with improved visibility
-    for (const auto& band : bands)
-    {
-        juce::Point<float> pos = band->getPosition();
-        float x = frequencyToX(band->getFrequency());
-        float y = gainToY(band->getGain());
-        
-        // Draw band handle with color matching the curve
-        juce::Colour bandColor;
-        switch (band->getType())
-        {
-            case FilterType::LowShelf:
-                bandColor = juce::Colours::blue;
-                break;
-            case FilterType::HighShelf:
-                bandColor = juce::Colours::red;
-                break;
-            case FilterType::Peak:
-                bandColor = juce::Colours::green;
-                break;
-            case FilterType::Notch:
-                bandColor = juce::Colours::yellow;
-                break;
-            case FilterType::LowPass:
-                bandColor = juce::Colours::cyan;
-                break;
-            case FilterType::HighPass:
-                bandColor = juce::Colours::magenta;
-                break;
-        }
-        
-        // Adjust color brightness based on gain
-        float brightness = juce::jmap(band->getGain(), minGain, maxGain, 0.3f, 1.0f);
-        bandColor = bandColor.withBrightness(brightness);
-        
-        g.setColour(band.get() == selectedBand ? bandColor.brighter(0.5f) : bandColor);
-        g.fillEllipse(x - 6, y - 6, 12, 12);
-        
-        // Draw band outline
-        g.setColour(juce::Colours::black);
-        g.drawEllipse(x - 6, y - 6, 12, 12, 1.0f);
-        
-        // Draw frequency and gain labels
-        g.setColour(juce::Colours::white);
-        g.setFont(12.0f);
-        
-        // Frequency label
-        juce::String freqText = juce::String(band->getFrequency(), 0) + " Hz";
-        g.drawText(freqText, x - 30, y - 25, 60, 20, juce::Justification::centred);
-        
-        // Gain label
-        juce::String gainText = juce::String(band->getGain(), 1) + " dB";
-        g.drawText(gainText, x - 30, y + 5, 60, 20, juce::Justification::centred);
-    }
 }
 
 void EQInterface::resized()
@@ -169,17 +180,19 @@ void EQInterface::mouseDown(const juce::MouseEvent& e)
 {
     selectedBand = nullptr;
     
-    for (const auto& band : bands)
+    if (audioProcessor)
     {
-        juce::Point<float> pos = band->getPosition();
-        float x = frequencyToX(band->getFrequency());
-        float y = gainToY(band->getGain());
-        
-        if (e.position.getDistanceFrom(juce::Point<float>(x, y)) < 8.0f)
+        for (const auto& band : audioProcessor->getBands())
         {
-            selectedBand = band.get();
-            repaint();
-            break;
+            float x = frequencyToX(band->getFrequency());
+            float y = gainToY(band->getGain());
+            
+            if (e.position.getDistanceFrom(juce::Point<float>(x, y)) < 8.0f)
+            {
+                selectedBand = band.get();
+                repaint();
+                break;
+            }
         }
     }
 }
@@ -213,51 +226,74 @@ void EQInterface::mouseUp(const juce::MouseEvent&)
 
 void EQInterface::addBand(const juce::Point<float>& position)
 {
-    auto newBand = std::make_unique<EQBand>();
-    newBand->setSampleRate(sampleRate);
-    updateBandPosition(newBand.get(), position);
-    bands.push_back(std::move(newBand));
-    updateFrequencyResponse();
-    repaint();
+    if (audioProcessor)
+    {
+        auto newBand = std::make_unique<EQBand>();
+        float freq = xToFrequency(position.x);
+        float gain = yToGain(position.y);
+        
+        newBand->setFrequency(freq);
+        newBand->setGain(gain);
+        newBand->setPosition(position);
+        
+        audioProcessor->addBand(std::move(newBand));
+        updateBands();
+    }
 }
 
 void EQInterface::removeBand(EQBand* band)
 {
-    bands.erase(std::remove_if(bands.begin(), bands.end(),
-                              [band](const auto& b) { return b.get() == band; }),
-                bands.end());
-    updateFrequencyResponse();
-    repaint();
+    if (audioProcessor)
+    {
+        audioProcessor->removeBand(band);
+        updateBands();
+    }
 }
 
 void EQInterface::updateBandPosition(EQBand* band, const juce::Point<float>& newPosition)
 {
-    float freq = xToFrequency(newPosition.x);
-    float gain = yToGain(newPosition.y);
-    
-    band->setFrequency(freq);
-    band->setGain(gain);
-    band->setPosition(newPosition);
-    
-    updateFrequencyResponse();
-    repaint();
+    if (audioProcessor)
+    {
+        float freq = xToFrequency(newPosition.x);
+        float gain = yToGain(newPosition.y);
+        
+        band->setFrequency(freq);
+        band->setGain(gain);
+        band->setPosition(newPosition);
+        
+        updateFrequencyResponse();
+        repaint();
+    }
 }
 
 void EQInterface::setSampleRate(double newSampleRate)
 {
     sampleRate = newSampleRate;
-    for (auto& band : bands)
+    if (audioProcessor)
     {
-        band->setSampleRate(sampleRate);
+        for (auto& band : audioProcessor->getBands())
+        {
+            band->setSampleRate(sampleRate);
+        }
+        updateFrequencyResponse();
     }
-    updateFrequencyResponse();
 }
 
 void EQInterface::process(juce::AudioBuffer<float>& buffer)
 {
-    for (auto& band : bands)
+    if (audioProcessor)
     {
-        band->process(buffer);
+        // Create an audio block from the buffer
+        juce::dsp::AudioBlock<float> block(buffer);
+        
+        // Create a processing context
+        juce::dsp::ProcessContextReplacing<float> context(block);
+        
+        // Process through each band
+        for (auto& band : audioProcessor->getBands())
+        {
+            band->process(context);
+        }
     }
 }
 
@@ -295,10 +331,13 @@ void EQInterface::updateFrequencyResponse()
 
 float EQInterface::calculateTotalGain(float frequency) const
 {
+    if (!audioProcessor)
+        return 0.0f;
+
     // Sum the responses from all bands
     float totalGain = 0.0f;
     
-    for (const auto& band : bands)
+    for (const auto& band : audioProcessor->getBands())
     {
         totalGain += band->calculateGain(frequency);
     }
