@@ -178,10 +178,9 @@ void EQInterface::resized()
 
 void EQInterface::mouseDown(const juce::MouseEvent& e)
 {
-    selectedBand = nullptr;
-    
     if (audioProcessor)
     {
+        // First check if we clicked on an existing band
         for (const auto& band : audioProcessor->getBands())
         {
             float x = frequencyToX(band->getFrequency());
@@ -191,15 +190,53 @@ void EQInterface::mouseDown(const juce::MouseEvent& e)
             {
                 selectedBand = band.get();
                 repaint();
-                break;
+                return;  // Exit early if we found a band
             }
         }
+        
+        // If we didn't click on a band, deselect the current band
+        selectedBand = nullptr;
+        repaint();
     }
 }
 
 void EQInterface::mouseDoubleClick(const juce::MouseEvent& e)
 {
-    addBand(e.position);
+    if (audioProcessor)
+    {
+        // First check if we're clicking near an existing band
+        for (const auto& band : audioProcessor->getBands())
+        {
+            float x = frequencyToX(band->getFrequency());
+            float y = gainToY(band->getGain());
+            
+            if (e.position.getDistanceFrom(juce::Point<float>(x, y)) < 8.0f)
+            {
+                // If we're near an existing band, don't create a new one
+                return;
+            }
+        }
+        
+        // Create new band only if we're not near any existing bands
+        auto newBand = std::make_unique<EQBand>();
+        float freq = xToFrequency(e.position.x);
+        float gain = yToGain(e.position.y);
+        
+        newBand->setFrequency(freq);
+        newBand->setGain(gain);
+        newBand->setPosition(e.position);
+        
+        // Store the raw pointer before moving the unique_ptr
+        auto* bandPtr = newBand.get();
+        audioProcessor->addBand(std::move(newBand));
+        
+        // Set the newly created band as selected
+        selectedBand = bandPtr;
+        
+        // Update the display
+        updateFrequencyResponse();
+        repaint();
+    }
 }
 
 void EQInterface::mouseDrag(const juce::MouseEvent& e)
@@ -217,17 +254,27 @@ void EQInterface::mouseDrag(const juce::MouseEvent& e)
 
 void EQInterface::mouseUp(const juce::MouseEvent&)
 {
-    if (selectedBand != nullptr)
-    {
-        selectedBand = nullptr;
-        repaint();
-    }
+    // Keep the band selected until the next mouseDown
+    repaint();
 }
 
 void EQInterface::addBand(const juce::Point<float>& position)
 {
     if (audioProcessor)
     {
+        // First check if we're adding near an existing band
+        for (const auto& band : audioProcessor->getBands())
+        {
+            float x = frequencyToX(band->getFrequency());
+            float y = gainToY(band->getGain());
+            
+            if (position.getDistanceFrom(juce::Point<float>(x, y)) < 8.0f)
+            {
+                // If we're near an existing band, don't create a new one
+                return;
+            }
+        }
+        
         auto newBand = std::make_unique<EQBand>();
         float freq = xToFrequency(position.x);
         float gain = yToGain(position.y);
@@ -237,7 +284,10 @@ void EQInterface::addBand(const juce::Point<float>& position)
         newBand->setPosition(position);
         
         audioProcessor->addBand(std::move(newBand));
-        updateBands();
+        
+        // Update the display
+        updateFrequencyResponse();
+        repaint();
     }
 }
 

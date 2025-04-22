@@ -35,6 +35,7 @@ private:
     SondyEQAudioProcessor* audioProcessor = nullptr;
     EQBand* selectedBand = nullptr;
     double sampleRate = 44100.0;
+    bool isDragging = false;
     
     juce::Path frequencyResponsePath;
     void updateFrequencyResponse();
