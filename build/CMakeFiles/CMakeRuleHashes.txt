@@ -1,0 +1,2 @@
+# Hashes of file build rules.
+69c3c8b1be4b9c27a888f518ca8230fa SondyEQ_artefacts/JuceLibraryCode/SondyEQ_VST3/PkgInfo
