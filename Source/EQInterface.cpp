@@ -155,7 +155,26 @@ void EQInterface::mouseDown(const juce::MouseEvent& e)
 {
     if (audioProcessor)
     {
-        // First check if we clicked on an existing band
+        // Handle right-click
+        if (e.mods.isRightButtonDown())
+        {
+            // Check if we right-clicked on a band
+            for (const auto& band : audioProcessor->getBands())
+            {
+                float x = frequencyToX(band->getFrequency());
+                float y = gainToY(band->getGain());
+                
+                if (e.position.getDistanceFrom(juce::Point<float>(x, y)) < 8.0f)
+                {
+                    showContextMenu(e.getScreenPosition(), band.get());
+                    return;
+                }
+            }
+            return;
+        }
+        
+        // Handle left-click
+        // Check if we clicked on an existing band
         for (const auto& band : audioProcessor->getBands())
         {
             float x = frequencyToX(band->getFrequency());
@@ -165,7 +184,7 @@ void EQInterface::mouseDown(const juce::MouseEvent& e)
             {
                 selectedBand = band.get();
                 repaint();
-                return;  // Exit early if we found a band
+                return;
             }
         }
         
@@ -404,4 +423,45 @@ void EQInterface::drawGridLines(juce::Graphics& g)
         float y = gainToY(gain);
         g.drawLine(0, y, getWidth(), y);
     }
+}
+
+void EQInterface::showContextMenu(const juce::Point<int>& position, EQBand* band)
+{
+    juce::PopupMenu menu;
+    
+    // Add filter type options
+    juce::PopupMenu filterTypeMenu;
+    filterTypeMenu.addItem(1, "Peak", true, band->getType() == FilterType::Peak);
+    filterTypeMenu.addItem(2, "Low Shelf", true, band->getType() == FilterType::LowShelf);
+    filterTypeMenu.addItem(3, "High Shelf", true, band->getType() == FilterType::HighShelf);
+    filterTypeMenu.addItem(4, "Notch", true, band->getType() == FilterType::Notch);
+    filterTypeMenu.addItem(5, "Low Pass", true, band->getType() == FilterType::LowPass);
+    filterTypeMenu.addItem(6, "High Pass", true, band->getType() == FilterType::HighPass);
+    
+    menu.addSubMenu("Filter Type", filterTypeMenu);
+    menu.addSeparator();
+    menu.addItem(7, "Delete");
+    
+    // Use the screen position directly for the menu
+    menu.showMenuAsync(juce::PopupMenu::Options()
+        .withTargetScreenArea(juce::Rectangle<int>(position.x - 1, position.y - 1, 2, 2))
+        .withMinimumWidth(120)
+        .withPreferredPopupDirection(juce::PopupMenu::Options::PopupDirection::downwards),
+        [this, band](int result)
+        {
+            if (result > 0)
+            {
+                switch (result)
+                {
+                    case 1: band->setType(FilterType::Peak); break;
+                    case 2: band->setType(FilterType::LowShelf); break;
+                    case 3: band->setType(FilterType::HighShelf); break;
+                    case 4: band->setType(FilterType::Notch); break;
+                    case 5: band->setType(FilterType::LowPass); break;
+                    case 6: band->setType(FilterType::HighPass); break;
+                    case 7: removeBand(band); break;
+                }
+                updateBands();
+            }
+        });
 } 

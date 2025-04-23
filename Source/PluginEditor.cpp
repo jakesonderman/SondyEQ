@@ -17,8 +17,10 @@ SondyEQAudioProcessorEditor::SondyEQAudioProcessorEditor (SondyEQAudioProcessor&
         audioProcessor.addBand(std::move(defaultBand));
     }
     
-    // Set initial size
-    setSize (800, 400);
+    // Set initial size and make resizable
+    setSize (1000, 600);
+    setResizable(true, true);
+    setResizeLimits(800, 400, 2000, 1200);
     
     // Make sure the interface fills the editor
     eqInterface.setBounds(getLocalBounds());

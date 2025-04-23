@@ -35,6 +35,7 @@ public:
 
 private:
     void timerCallback() override;
+    void showContextMenu(const juce::Point<int>& position, EQBand* band);
     
     SondyEQAudioProcessor* audioProcessor = nullptr;
     EQBand* selectedBand = nullptr;
