@@ -10,8 +10,8 @@ EQInterface::EQInterface()
     spectrumComponent->setOverlayMode(true); // Overlay the channels
     addAndMakeVisible(spectrumComponent.get());
     
-    // Start the timer for updates
-    startTimerHz(30);
+    // Start the timer for updates - reduced from 30Hz to 15Hz for smoother updates
+    startTimerHz(15);
 }
 
 EQInterface::~EQInterface()
@@ -42,7 +42,16 @@ void EQInterface::paint(juce::Graphics& g)
     // Fill background
     g.fillAll(juce::Colours::black);
 
-    // Draw grid lines first (background)
+    // Draw FFT spectrum first (background)
+    if (spectrumComponent)
+    {
+        // Create a temporary graphics context with reduced opacity
+        juce::Graphics::ScopedSaveState state(g);
+        g.setOpacity(0.25f);  // Slightly reduced opacity for more subtle visualization
+        spectrumComponent->paint(g);
+    }
+
+    // Draw grid lines
     drawGridLines(g);
 
     // Update and draw frequency response
@@ -129,15 +138,6 @@ void EQInterface::paint(juce::Graphics& g)
             juce::String gainText = juce::String(band->getGain(), 1) + " dB";
             g.drawText(gainText, x - 30, y + 5, 60, 20, juce::Justification::centred);
         }
-    }
-
-    // Draw FFT spectrum last (foreground)
-    if (spectrumComponent)
-    {
-        // Create a temporary graphics context with reduced opacity
-        juce::Graphics::ScopedSaveState state(g);
-        g.setOpacity(0.7f);  // Adjust opacity as needed
-        spectrumComponent->paint(g);
     }
 }
 

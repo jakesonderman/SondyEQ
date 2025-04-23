@@ -328,20 +328,33 @@ public:
             juce::Path fftPath;
             bool pathStarted = false;
             
-            for (int i = 0; i < analyzer.getFFTSize() / 2; ++i)
+            const int numBins = analyzer.getFFTSize() / 2;
+            const float minFreq = 20.0f;
+            const float maxFreq = 20000.0f;
+            
+            for (int i = 0; i < numBins; ++i)
             {
-                // Map bin index to x position using logarithmic scale
-                const float binFreq = (float)i * sampleRate / analyzer.getFFTSize();
-                const float normX = std::log10(1 + binFreq) / std::log10(1 + sampleRate / 2);
-                const float x = normX * bounds.getWidth();
+                // Calculate frequency for this bin
+                float freq = (i * sampleRate) / (2.0f * numBins);
                 
-                // Get magnitude and convert to decibels
-                const float magnitude = analyzer.getMagnitudeForBin(channel, i);
-                const float decibels = 20.0f * std::log10(magnitude);
+                // Skip bins outside our frequency range
+                if (freq < minFreq || freq > maxFreq)
+                    continue;
                 
-                // Map decibels to y position
-                const float normY = juce::jmap(decibels, -60.0f, 0.0f, 0.0f, 1.0f);
-                const float y = bounds.getHeight() * (1.0f - juce::jlimit(0.0f, 1.0f, normY));
+                // Get magnitude for this bin
+                float magnitude = analyzer.getMagnitudeForBin(channel, i);
+                
+                // Convert to decibels with a reference level adjustment
+                float dB = juce::Decibels::gainToDecibels(magnitude, -100.0f);
+                
+                // Normalize the dB value to a 0...1 range
+                float normalizedMagnitude = juce::jlimit(0.0f, 1.0f, (dB + 100.0f) / 100.0f);
+                
+                // Map frequency to x position (logarithmic)
+                float x = std::log(freq / minFreq) / std::log(maxFreq / minFreq) * bounds.getWidth();
+                
+                // Map the normalized magnitude to a y position, with a vertical offset
+                float y = (1.0f - normalizedMagnitude) * bounds.getHeight() * 1.0f + bounds.getHeight() * 0.35f;
                 
                 if (!pathStarted)
                 {
@@ -354,8 +367,11 @@ public:
                 }
             }
             
-            g.setColour(getChannelColour(channel));
-            g.strokePath(fftPath, juce::PathStrokeType(2.0f));
+            // Draw the path with a semi-transparent color
+            g.setOpacity(0.25f);
+            g.setColour(juce::Colours::white);
+       
+            g.strokePath(fftPath, juce::PathStrokeType(0.5f));
         }
     }
 
