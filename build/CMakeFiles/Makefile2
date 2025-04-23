@@ -175,12 +175,12 @@ JUCE/modules/clean:
 CMakeFiles/SondyEQ.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SondyEQ.dir/build.make CMakeFiles/SondyEQ.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SondyEQ.dir/build.make CMakeFiles/SondyEQ.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22 "Built target SondyEQ"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 "Built target SondyEQ"
 .PHONY : CMakeFiles/SondyEQ.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/SondyEQ.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/SondyEQ.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/build/CMakeFiles 0
 .PHONY : CMakeFiles/SondyEQ.dir/rule
@@ -192,7 +192,7 @@ SondyEQ: CMakeFiles/SondyEQ.dir/rule
 # codegen rule for target.
 CMakeFiles/SondyEQ.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SondyEQ.dir/build.make CMakeFiles/SondyEQ.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22 "Finished codegen for target SondyEQ"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 "Finished codegen for target SondyEQ"
 .PHONY : CMakeFiles/SondyEQ.dir/codegen
 
 # clean rule for target.
@@ -212,7 +212,7 @@ CMakeFiles/SondyEQ_All.dir/all: CMakeFiles/SondyEQ_VST3.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/SondyEQ_All.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/build/CMakeFiles 37
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/build/CMakeFiles 38
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/SondyEQ_All.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/build/CMakeFiles 0
 .PHONY : CMakeFiles/SondyEQ_All.dir/rule
@@ -236,16 +236,16 @@ CMakeFiles/SondyEQ_All.dir/clean:
 # Target rules for target CMakeFiles/SondyEQ_VST3.dir
 
 # All Build rule for target.
-CMakeFiles/SondyEQ_VST3.dir/all: CMakeFiles/juce_vst3_helper.dir/all
 CMakeFiles/SondyEQ_VST3.dir/all: CMakeFiles/SondyEQ.dir/all
+CMakeFiles/SondyEQ_VST3.dir/all: CMakeFiles/juce_vst3_helper.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SondyEQ_VST3.dir/build.make CMakeFiles/SondyEQ_VST3.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SondyEQ_VST3.dir/build.make CMakeFiles/SondyEQ_VST3.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/build/CMakeFiles --progress-num=23,24,25,26,27,28,29,30,31,32,33,34,35 "Built target SondyEQ_VST3"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/build/CMakeFiles --progress-num=24,25,26,27,28,29,30,31,32,33,34,35,36 "Built target SondyEQ_VST3"
 .PHONY : CMakeFiles/SondyEQ_VST3.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/SondyEQ_VST3.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/build/CMakeFiles 37
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/build/CMakeFiles 38
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/SondyEQ_VST3.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/build/CMakeFiles 0
 .PHONY : CMakeFiles/SondyEQ_VST3.dir/rule
@@ -257,7 +257,7 @@ SondyEQ_VST3: CMakeFiles/SondyEQ_VST3.dir/rule
 # codegen rule for target.
 CMakeFiles/SondyEQ_VST3.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SondyEQ_VST3.dir/build.make CMakeFiles/SondyEQ_VST3.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/build/CMakeFiles --progress-num=23,24,25,26,27,28,29,30,31,32,33,34,35 "Finished codegen for target SondyEQ_VST3"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/build/CMakeFiles --progress-num=24,25,26,27,28,29,30,31,32,33,34,35,36 "Finished codegen for target SondyEQ_VST3"
 .PHONY : CMakeFiles/SondyEQ_VST3.dir/codegen
 
 # clean rule for target.
@@ -272,7 +272,7 @@ CMakeFiles/SondyEQ_VST3.dir/clean:
 CMakeFiles/juce_vst3_helper.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/juce_vst3_helper.dir/build.make CMakeFiles/juce_vst3_helper.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/juce_vst3_helper.dir/build.make CMakeFiles/juce_vst3_helper.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/build/CMakeFiles --progress-num=36,37 "Built target juce_vst3_helper"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/build/CMakeFiles --progress-num=37,38 "Built target juce_vst3_helper"
 .PHONY : CMakeFiles/juce_vst3_helper.dir/all
 
 # Build rule for subdir invocation for target.
@@ -289,7 +289,7 @@ juce_vst3_helper: CMakeFiles/juce_vst3_helper.dir/rule
 # codegen rule for target.
 CMakeFiles/juce_vst3_helper.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/juce_vst3_helper.dir/build.make CMakeFiles/juce_vst3_helper.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/build/CMakeFiles --progress-num=36,37 "Finished codegen for target juce_vst3_helper"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/build/CMakeFiles --progress-num=37,38 "Finished codegen for target juce_vst3_helper"
 .PHONY : CMakeFiles/juce_vst3_helper.dir/codegen
 
 # clean rule for target.

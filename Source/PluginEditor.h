@@ -12,6 +12,9 @@ public:
 
     void paint (juce::Graphics&) override;
     void resized() override;
+    
+    // Process audio data for visualization
+    void processBlock(juce::AudioBuffer<float>& buffer);
 
 private:
     SondyEQAudioProcessor& audioProcessor;

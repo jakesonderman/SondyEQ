@@ -37,6 +37,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/SondyEQ.dir/Source/EQBand.cpp.o.d"
   "CMakeFiles/SondyEQ.dir/Source/EQInterface.cpp.o"
   "CMakeFiles/SondyEQ.dir/Source/EQInterface.cpp.o.d"
+  "CMakeFiles/SondyEQ.dir/Source/FFT.cpp.o"
+  "CMakeFiles/SondyEQ.dir/Source/FFT.cpp.o.d"
   "CMakeFiles/SondyEQ.dir/Source/PluginEditor.cpp.o"
   "CMakeFiles/SondyEQ.dir/Source/PluginEditor.cpp.o.d"
   "CMakeFiles/SondyEQ.dir/Source/PluginProcessor.cpp.o"

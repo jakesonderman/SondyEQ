@@ -32,6 +32,8 @@ target_sources(SondyEQ
         Source/PluginEditor.cpp
         Source/EQBand.cpp
         Source/EQInterface.cpp
+        Source/FFT.cpp
+        Source/FFT.h
         Source/PluginProcessor.h
         Source/PluginEditor.h
         Source/EQBand.h

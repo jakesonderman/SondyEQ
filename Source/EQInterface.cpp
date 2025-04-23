@@ -4,10 +4,28 @@
 EQInterface::EQInterface()
 {
     addMouseListener(this, true);
+    // Initialize FFT analyzer with 2 channels and order 11 (2048 samples)
+    fftAnalyzer = std::make_unique<SondyFFT::MultiChannelFFTSpectrumAnalyzer>(2, 11);
+    spectrumComponent = std::make_unique<SondyFFT::MultiChannelSpectrumComponent>(*fftAnalyzer);
+    spectrumComponent->setOverlayMode(true); // Overlay the channels
+    addAndMakeVisible(spectrumComponent.get());
+    
+    // Start the timer for updates
+    startTimerHz(30);
 }
 
 EQInterface::~EQInterface()
 {
+    stopTimer();
+    spectrumComponent = nullptr;
+    fftAnalyzer = nullptr;
+}
+
+void EQInterface::timerCallback()
+{
+    // Update the frequency response and display
+    updateFrequencyResponse();
+    repaint();
 }
 
 void EQInterface::updateBands()
@@ -21,122 +39,79 @@ void EQInterface::updateBands()
 
 void EQInterface::paint(juce::Graphics& g)
 {
-    // Draw background
+    // Fill background
     g.fillAll(juce::Colours::black);
-    
-    // Draw grid lines
-    g.setColour(juce::Colours::white.withAlpha(0.2f));
-    
-    // Frequency grid lines (logarithmic)
-    for (float freq = 100.0f; freq <= 10000.0f; freq *= 10.0f)
-    {
-        float x = frequencyToX(freq);
-        g.drawLine(x, 0, x, getHeight());
-    }
-    
-    // Gain grid lines
-    for (float gain = minGain; gain <= maxGain; gain += 6.0f)
-    {
-        float y = gainToY(gain);
-        g.drawLine(0, y, getWidth(), y);
-    }
-    
-    // Create dynamic gradient based on bands
+
+    // Draw grid lines first (background)
+    drawGridLines(g);
+
+    // Update and draw frequency response
     if (audioProcessor && !audioProcessor->getBands().empty())
     {
+        updateFrequencyResponse();
+        
+        // Draw frequency response curve with solid white first (for visibility)
+        g.setColour(juce::Colours::white.withAlpha(0.8f));
+        g.strokePath(frequencyResponsePath, juce::PathStrokeType(2.0f));
+        
+        // Then draw with gradient
         juce::ColourGradient gradient;
+        const auto& processorBands = audioProcessor->getBands();
         
         // Add gradient stops for each band
-        const auto& processorBands = audioProcessor->getBands();
         for (size_t i = 0; i < processorBands.size(); ++i)
         {
             const auto& band = processorBands[i];
-            float x = frequencyToX(band->getFrequency());
-            float y = gainToY(band->getGain());
-            
-            // Calculate color based on band type and gain
             juce::Colour bandColor;
             switch (band->getType())
             {
-                case FilterType::LowShelf:
-                    bandColor = juce::Colours::blue;
-                    break;
-                case FilterType::HighShelf:
-                    bandColor = juce::Colours::red;
-                    break;
-                case FilterType::Peak:
-                    bandColor = juce::Colours::green;
-                    break;
-                case FilterType::Notch:
-                    bandColor = juce::Colours::yellow;
-                    break;
-                case FilterType::LowPass:
-                    bandColor = juce::Colours::cyan;
-                    break;
-                case FilterType::HighPass:
-                    bandColor = juce::Colours::magenta;
-                    break;
+                case FilterType::LowShelf:   bandColor = juce::Colours::blue; break;
+                case FilterType::HighShelf:  bandColor = juce::Colours::red; break;
+                case FilterType::Peak:       bandColor = juce::Colours::green; break;
+                case FilterType::Notch:      bandColor = juce::Colours::yellow; break;
+                case FilterType::LowPass:    bandColor = juce::Colours::cyan; break;
+                case FilterType::HighPass:   bandColor = juce::Colours::magenta; break;
             }
             
-            // Adjust color brightness based on gain
             float brightness = juce::jmap(band->getGain(), minGain, maxGain, 0.3f, 1.0f);
             bandColor = bandColor.withBrightness(brightness);
-            
-            // Add gradient stop
             gradient.addColour(static_cast<float>(i) / (processorBands.size() - 1), bandColor);
         }
         
-        // If we only have one band, add a second stop to create a gradient
         if (processorBands.size() == 1)
         {
             gradient.addColour(1.0f, processorBands[0]->getType() == FilterType::Peak ? 
                              juce::Colours::green : juce::Colours::blue);
         }
         
-        // Set up gradient
         gradient.point1 = { 0.0f, 0.0f };
         gradient.point2 = { static_cast<float>(getWidth()), 0.0f };
         gradient.isRadial = false;
         
-        // Draw frequency response curve with dynamic gradient
         g.setGradientFill(gradient);
-        g.strokePath(frequencyResponsePath, juce::PathStrokeType(3.0f));
+        g.strokePath(frequencyResponsePath, juce::PathStrokeType(2.0f));
         
-        // Draw bands with improved visibility
+        // Draw band nodes
         for (const auto& band : processorBands)
         {
-            juce::Point<float> pos = band->getPosition();
             float x = frequencyToX(band->getFrequency());
             float y = gainToY(band->getGain());
             
-            // Draw band handle with color matching the curve
             juce::Colour bandColor;
             switch (band->getType())
             {
-                case FilterType::LowShelf:
-                    bandColor = juce::Colours::blue;
-                    break;
-                case FilterType::HighShelf:
-                    bandColor = juce::Colours::red;
-                    break;
-                case FilterType::Peak:
-                    bandColor = juce::Colours::green;
-                    break;
-                case FilterType::Notch:
-                    bandColor = juce::Colours::yellow;
-                    break;
-                case FilterType::LowPass:
-                    bandColor = juce::Colours::cyan;
-                    break;
-                case FilterType::HighPass:
-                    bandColor = juce::Colours::magenta;
-                    break;
+                case FilterType::LowShelf:   bandColor = juce::Colours::blue; break;
+                case FilterType::HighShelf:  bandColor = juce::Colours::red; break;
+                case FilterType::Peak:       bandColor = juce::Colours::green; break;
+                case FilterType::Notch:      bandColor = juce::Colours::yellow; break;
+                case FilterType::LowPass:    bandColor = juce::Colours::cyan; break;
+                case FilterType::HighPass:   bandColor = juce::Colours::magenta; break;
             }
             
-            // Adjust color brightness based on gain
             float brightness = juce::jmap(band->getGain(), minGain, maxGain, 0.3f, 1.0f);
             bandColor = bandColor.withBrightness(brightness);
             
+            // Draw the band node
             g.setColour(band.get() == selectedBand ? bandColor.brighter(0.5f) : bandColor);
             g.fillEllipse(x - 6, y - 6, 12, 12);
             
@@ -148,31 +123,31 @@ void EQInterface::paint(juce::Graphics& g)
             g.setColour(juce::Colours::white);
             g.setFont(12.0f);
             
-            // Frequency label
             juce::String freqText = juce::String(band->getFrequency(), 0) + " Hz";
             g.drawText(freqText, x - 30, y - 25, 60, 20, juce::Justification::centred);
             
-            // Gain label
             juce::String gainText = juce::String(band->getGain(), 1) + " dB";
             g.drawText(gainText, x - 30, y + 5, 60, 20, juce::Justification::centred);
         }
     }
-    else
+
+    // Draw FFT spectrum last (foreground)
+    if (spectrumComponent)
     {
-        // Default gradient when no bands are present
-        juce::ColourGradient defaultGradient(
-            juce::Colours::cyan.withAlpha(0.8f),
-            0.0f, 0.0f,
-            juce::Colours::magenta.withAlpha(0.8f),
-            static_cast<float>(getWidth()), 0.0f,
-            false);
-        g.setGradientFill(defaultGradient);
-        g.strokePath(frequencyResponsePath, juce::PathStrokeType(3.0f));
+        // Create a temporary graphics context with reduced opacity
+        juce::Graphics::ScopedSaveState state(g);
+        g.setOpacity(0.7f);  // Adjust opacity as needed
+        spectrumComponent->paint(g);
     }
 }
 
 void EQInterface::resized()
 {
+    // Make the spectrum component fill the entire interface
+    if (spectrumComponent)
+    {
+        spectrumComponent->setBounds(getLocalBounds());
+    }
     updateFrequencyResponse();
 }
 
@@ -331,19 +306,10 @@ void EQInterface::setSampleRate(double newSampleRate)
 
 void EQInterface::process(juce::AudioBuffer<float>& buffer)
 {
-    if (audioProcessor)
+    if (fftAnalyzer)
     {
-        // Create an audio block from the buffer
-        juce::dsp::AudioBlock<float> block(buffer);
-        
-        // Create a processing context
-        juce::dsp::ProcessContextReplacing<float> context(block);
-        
-        // Process through each band
-        for (auto& band : audioProcessor->getBands())
-        {
-            band->process(context);
-        }
+        // Process audio through FFT analyzer
+        fftAnalyzer->processAudioBuffer(buffer);
     }
 }
 
@@ -419,4 +385,23 @@ float EQInterface::xToFrequency(float x) const
 float EQInterface::yToGain(float y) const
 {
     return minGain + (1.0f - y / getHeight()) * (maxGain - minGain);
+}
+
+void EQInterface::drawGridLines(juce::Graphics& g)
+{
+    g.setColour(juce::Colours::white.withAlpha(0.2f));
+    
+    // Frequency grid lines (logarithmic)
+    for (float freq = 100.0f; freq <= 10000.0f; freq *= 10.0f)
+    {
+        float x = frequencyToX(freq);
+        g.drawLine(x, 0, x, getHeight());
+    }
+    
+    // Gain grid lines
+    for (float gain = minGain; gain <= maxGain; gain += 6.0f)
+    {
+        float y = gainToY(gain);
+        g.drawLine(0, y, getWidth(), y);
+    }
 } 

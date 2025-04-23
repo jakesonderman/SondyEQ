@@ -1291,6 +1291,7 @@ CMakeFiles/SondyEQ.dir/Source/EQInterface.cpp.o: \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/widgets/juce_Limiter.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/widgets/juce_Phaser.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_dsp/widgets/juce_Chorus.h \
+  /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/Source/FFT.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/Source/PluginProcessor.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_devices/juce_audio_devices.h \
   /Users/sondy/Desktop/Sondy_V3/Coding/Plugin/SondyEQ/JUCE/modules/juce_audio_devices/midi_io/juce_MidiDevices.h \

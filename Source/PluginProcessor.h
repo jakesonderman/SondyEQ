@@ -13,8 +13,10 @@
 #include <juce_gui_basics/juce_gui_basics.h>
 #include <juce_gui_extra/juce_gui_extra.h>
 #include <juce_dsp/juce_dsp.h>
-#include "EQInterface.h"
 #include "EQBand.h"
+
+// Forward declare EQInterface to avoid circular dependency
+class EQInterface;
 
 class SondyEQAudioProcessor : public juce::AudioProcessor
 {
@@ -48,15 +50,12 @@ public:
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
-    EQInterface& getEQInterface() { return eqInterface; }
-
     // Public access to bands for the editor
     std::vector<std::unique_ptr<EQBand>>& getBands() { return bands; }
     void addBand(std::unique_ptr<EQBand> band);
     void removeBand(EQBand* band);
 
 private:
-    EQInterface eqInterface;
     std::vector<std::unique_ptr<EQBand>> bands;
     juce::dsp::ProcessSpec spec;
     

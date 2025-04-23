@@ -102,6 +102,7 @@ void SondyEQAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBloc
     for (auto& band : bands)
     {
         band->prepare(spec);
+        band->setSampleRate(sampleRate);
     }
 }
 
@@ -141,6 +142,12 @@ void SondyEQAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
     for (auto& band : bands)
     {
         band->process(context);
+    }
+
+    // Notify editor of new audio data
+    if (auto* editor = dynamic_cast<SondyEQAudioProcessorEditor*>(getActiveEditor()))
+    {
+        editor->processBlock(buffer);
     }
 }
 

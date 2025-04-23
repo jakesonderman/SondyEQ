@@ -5,11 +5,13 @@
 #include <juce_gui_basics/juce_gui_basics.h>
 #include <juce_audio_basics/juce_audio_basics.h>
 #include "EQBand.h"
+#include "FFT.h"
 
 // Forward declaration
 class SondyEQAudioProcessor;
 
-class EQInterface : public juce::Component
+class EQInterface : public juce::Component,
+                    private juce::Timer
 {
 public:
     EQInterface();
@@ -32,13 +34,20 @@ public:
     float calculateTotalGain(float frequency) const;
 
 private:
+    void timerCallback() override;
+    
     SondyEQAudioProcessor* audioProcessor = nullptr;
     EQBand* selectedBand = nullptr;
     double sampleRate = 44100.0;
     bool isDragging = false;
     
+    // FFT related members (updated to multichannel)
+    std::unique_ptr<SondyFFT::MultiChannelFFTSpectrumAnalyzer> fftAnalyzer;
+    std::unique_ptr<SondyFFT::MultiChannelSpectrumComponent> spectrumComponent;
+    
     juce::Path frequencyResponsePath;
     void updateFrequencyResponse();
+    void drawGridLines(juce::Graphics& g);
     
     float frequencyToX(float freq) const;
     float gainToY(float gain) const;

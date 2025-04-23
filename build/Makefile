@@ -958,6 +958,30 @@ Source/EQInterface.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SondyEQ.dir/build.make CMakeFiles/SondyEQ.dir/Source/EQInterface.cpp.s
 .PHONY : Source/EQInterface.cpp.s
 
+Source/FFT.o: Source/FFT.cpp.o
+.PHONY : Source/FFT.o
+
+# target to build an object file
+Source/FFT.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SondyEQ.dir/build.make CMakeFiles/SondyEQ.dir/Source/FFT.cpp.o
+.PHONY : Source/FFT.cpp.o
+
+Source/FFT.i: Source/FFT.cpp.i
+.PHONY : Source/FFT.i
+
+# target to preprocess a source file
+Source/FFT.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SondyEQ.dir/build.make CMakeFiles/SondyEQ.dir/Source/FFT.cpp.i
+.PHONY : Source/FFT.cpp.i
+
+Source/FFT.s: Source/FFT.cpp.s
+.PHONY : Source/FFT.s
+
+# target to generate assembly for a file
+Source/FFT.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SondyEQ.dir/build.make CMakeFiles/SondyEQ.dir/Source/FFT.cpp.s
+.PHONY : Source/FFT.cpp.s
+
 Source/PluginEditor.o: Source/PluginEditor.cpp.o
 .PHONY : Source/PluginEditor.o
 
@@ -1115,6 +1139,9 @@ help:
 	@echo "... Source/EQInterface.o"
 	@echo "... Source/EQInterface.i"
 	@echo "... Source/EQInterface.s"
+	@echo "... Source/FFT.o"
+	@echo "... Source/FFT.i"
+	@echo "... Source/FFT.s"
 	@echo "... Source/PluginEditor.o"
 	@echo "... Source/PluginEditor.i"
 	@echo "... Source/PluginEditor.s"
